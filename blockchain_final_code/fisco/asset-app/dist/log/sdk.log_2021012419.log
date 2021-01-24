@@ -1,0 +1,4 @@
+[ERROR] [2021-01-24 21:57:01] ChannelHandler.userEventTriggered(58) |  idle state event:WRITER_IDLE connect127.0.0.1:20200 long time Inactive, disconnect
+[DEBUG] [2021-01-24 21:57:01] ChannelHandler.channelInactive(128) |  channelInactive, disconnect 127.0.0.1:20200 ,true
+[DEBUG] [2021-01-24 21:57:01] ConnectionManager.removeConnectionContext(419) |  result: true, host: 127.0.0.1, port: 20200, ctx: 1002083081
+[DEBUG] [2021-01-24 21:57:01] ChannelMsgHandler.onDisconnect(163) | onDisconnect in ChannelMsgHandler called, host : 127.0.0.1:20200
