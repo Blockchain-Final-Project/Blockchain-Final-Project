@@ -25,7 +25,7 @@ cd fisco\nodes\127.0.0.1
 bash start_all.sh
 ```
 
-
+<img src="README.assets/image-20210125144553484.png" alt="image-20210125144553484" style="zoom:67%;" />
 
 ## 2.编译项目
 
@@ -39,6 +39,8 @@ cd fisco/asset-app
 ## 3.运行代码
 
 - 部署运行
+- 合约已经内置于控制台中，位于控制台目录下 fisco\console\contracts\solidity
+- 在控制台输入以下指令，部署成功则返回合约地址
 
 ```bash
 cd fisco/asset-app/dist
