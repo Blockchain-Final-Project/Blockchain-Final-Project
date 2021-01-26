@@ -1,5 +1,3 @@
-org/fisco/bcos/asset/client/AssetBackend.java
- org.fisco.bcos.asset.client.AssetBackend
 org/fisco/bcos/asset/contract/Asset.java
  org.fisco.bcos.asset.contract.Asset
  org.fisco.bcos.asset.contract.Asset$1
@@ -66,3 +64,5 @@ org/fisco/bcos/asset/contract/Asset.java
  org.fisco.bcos.asset.contract.Asset$TransferEventEventResponse
 org/fisco/bcos/asset/client/AssetClient.java
  org.fisco.bcos.asset.client.AssetClient
+org/fisco/bcos/asset/client/AssetBackend.java
+ org.fisco.bcos.asset.client.AssetBackend

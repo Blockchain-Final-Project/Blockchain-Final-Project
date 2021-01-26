@@ -29,7 +29,7 @@
 | 部分代码文件      | 包含 前端+后端+链端 的关键代码文件                           |
 | blockchain_final  | 完整的项目文件（基于区块链的供应链金融平台）包括 fisco 区块链系统；gradle-6.8.zip；list.txt（项目结构） |
 
-- 具体的项目安装部署流程请参考 stage_3 文件夹中的 readme.md
+- 具体的项目安装部署流程请参考 stage_3 文件夹中的 `README.md`
 
 
 

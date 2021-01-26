@@ -74,7 +74,12 @@ public class AssetClient {
         read_file();
         int select;
         String name, password, password_again;
-        System.out.print("请输入数字：1）登录已有账户 2）注册新账户\n");
+        for (int i = 0; i < 25; i++) System.out.print("\n");
+        for (int i = 0; i < 40; i++) System.out.print("*");
+        System.out.print("\n");
+        System.out.print("尊敬的用户，欢迎您使用本区块链金融系统\n请输入以下数字来选择您要进行的操作：\n1: 登录已有账户 \n2: 注册新账户\n3: 退出系统\n");
+        for (int i = 0; i < 40; i++) System.out.print("*");
+        for (int i = 0; i < 25; i++) System.out.print("\n");
         select = scanner.nextInt();
 
         if (select == 1) {
@@ -86,11 +91,17 @@ public class AssetClient {
             if (passwordMap.get(name) != null && passwordMap.get(name).compareTo(password) == 0) {
                 current = name;
                 System.out.print("登录成功\n");
+                System.out.print("等待下一步操作.....");
+                    String temp = (String)scanner.nextLine();
+                    String temp2 = (String)scanner.nextLine();
                 status = true;
                 return false;
             }
             else {
-                System.out.print("登录失败\n");
+                System.out.print("登录失败，用户不存在或密码错误\n");
+                System.out.print("等待下一步操作.....");
+                    String temp = (String)scanner.nextLine();
+                    String temp2 = (String)scanner.nextLine();
                 status = false;
                 return false;
             }
@@ -102,6 +113,9 @@ public class AssetClient {
             name = (String)scanner.nextLine();
             if (passwordMap.get(name) != null) {
                 System.out.print("用户名已经被使用过\n");
+                System.out.print("等待下一步操作.....");
+                    String temp = (String)scanner.nextLine();
+                    String temp2 = (String)scanner.nextLine();
                 status = false;
                 return false;
             }
@@ -118,6 +132,9 @@ public class AssetClient {
                     write_file();
                     read_file();
                     System.out.print("注册成功\n");
+                    System.out.print("等待下一步操作.....");
+                    String temp = (String)scanner.nextLine();
+                    String temp2 = (String)scanner.nextLine();
                     status = false;
                     return false;
                 }
@@ -128,6 +145,19 @@ public class AssetClient {
                 }
             }
         }
+        else if(select == 3){
+          System.out.println("退出系统，欢迎您的下次使用！！");
+          String temp11 = (String)scanner.nextLine();
+          String temp22 = (String)scanner.nextLine();
+          System.exit(0);
+        }
+        else{
+          System.out.print("非法输入\n");
+          System.out.print("等待下一步操作.....");
+          String temp11 = (String)scanner.nextLine();
+          String temp22 = (String)scanner.nextLine();
+          return false;
+        }
         return false;
     }
 
@@ -136,8 +166,12 @@ public class AssetClient {
     }
 
     public void msg() {
-        System.out.print("尊敬的" + current + ", 接下来你想做什么呢?\n");
-        System.out.println("0: 查询个人信用额度\n1: 查询交易\n2: 添加交易\n3: 拆分交易\n4: 向银行贷款融资\n5: 支付结算交易\n6: 退出系统\n\n");
+        for (int i = 0; i < 40; i++) System.out.print("*");
+        System.out.print("\n");
+        System.out.print("尊敬的" + current + ", 请输入数字选择您需要的功能\n");
+        System.out.println("0: 查询个人信用额度\n1: 查询交易\n2: 添加交易\n3: 拆分交易\n4: 向银行贷款融资\n5: 支付结算交易\n6: 退出登录");
+        for (int i = 0; i < 40; i++) System.out.print("*");
+        for (int i = 0; i < 25; i++) System.out.print("\n");
     }
     
       //运行前端
@@ -154,9 +188,9 @@ public class AssetClient {
     boolean flag = true;
     while (flag) {
       while (client.login(backend) == false) {
-        System.out.print("已登录! \n");
+
         if (client.getStatus() == false) {
-          System.out.print("Status is false!\n");
+
           continue;
         }
         break;
@@ -166,7 +200,6 @@ public class AssetClient {
       boolean flag_cmd = true;
       String waitkey, debtee, account;
       String money;
-      int trans_id = 5000;
       String trans_id_str, old_trans_id_str;
 
       while(flag_cmd)
@@ -178,9 +211,10 @@ public class AssetClient {
           select_cmd = scanner.nextInt();
           switch(select_cmd){
             case 0:   //查询账户信用额度
-              System.out.print("查询账户信用额度：\n");
+
+              System.out.print("查询账户信用额度\n");
               account = (String)scanner.nextLine();
-              System.out.print("请输入要查询的账户: ");
+              System.out.print("请输入要查询的账户（用户名）: ");
               account = (String)scanner.nextLine();
 
               backend.queryAssetAmount(account);
@@ -207,15 +241,16 @@ public class AssetClient {
 
             case 2:   //添加交易
               System.out.print("添加交易\n");
-              debtee = (String)scanner.nextLine();
+              trans_id_str = (String)scanner.nextLine();
+              System.out.print("请输入交易ID: ");
+              trans_id_str = (String)scanner.nextLine();
+
               System.out.print("请选择债权人账户: ");
               debtee = (String)scanner.nextLine();
 
               System.out.print("请输入交易额度: ");
               money = (String)scanner.nextLine();
-
-              trans_id_str = trans_id+"";
-              trans_id += 1;
+              
 
               backend.createAssetTransaction(trans_id_str, client.getCurrentUser(), debtee, new BigInteger(money));
 
@@ -228,17 +263,17 @@ public class AssetClient {
             case 3:   //拆分交易
               System.out.print("拆分交易\n");
               old_trans_id_str = (String)scanner.nextLine();
-              System.out.print("请输入交易ID: ");
+              System.out.print("请输入旧交易ID: ");
               old_trans_id_str = (String)scanner.nextLine();
+
+              System.out.print("请输入新创建交易ID: ");
+              trans_id_str = (String)scanner.nextLine();
 
               System.out.print("请输入新创建交易的债权人账户: ");
               debtee = (String)scanner.nextLine();
 
               System.out.print("请输入拆分额度: ");
               money = (String)scanner.nextLine();
-
-              trans_id_str = trans_id+"";
-              trans_id += 1;
 
               backend.divideAssetTransaction(old_trans_id_str, trans_id_str, debtee, new BigInteger(money));
 
@@ -250,12 +285,12 @@ public class AssetClient {
 
             case 4:   //向银行贷款融资
               System.out.print("向银行贷款融资\n");
-              money = (String)scanner.nextLine();
+              trans_id_str = (String)scanner.nextLine();
+              System.out.print("请输入融资交易ID: ");
+              trans_id_str = (String)scanner.nextLine();
+
               System.out.print("请输入额度: ");
               money = (String)scanner.nextLine();
-
-              trans_id_str = trans_id+"";
-              trans_id += 1;
 
               backend.financeAssetTransaction(trans_id_str, client.getCurrentUser(), new BigInteger(money));
 
@@ -284,7 +319,11 @@ public class AssetClient {
               
             case 6: // 退出系统
 			        client.setCurrentNull();
-		          flag_cmd = false;
+              flag_cmd = false;
+              System.out.print("退出成功\n等待下一步操作.....");
+              waitkey = (String)scanner.nextLine();
+              waitkey = (String)scanner.nextLine();
+              client.clear();
               break;
 
             default:
@@ -304,3 +343,4 @@ public class AssetClient {
     System.exit(0);
   }
 }
+
